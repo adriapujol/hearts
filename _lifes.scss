@@ -1,0 +1,27 @@
+@import "./colors";
+
+.life-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 0px 2vw;
+    // width: 30vw;
+    border-radius: 20px;
+    background-color: $lifeblock;
+    box-shadow: 15px 15px $lifeblock-shadow;
+
+    .life-unit {
+        font-size: 5.5vw;
+        &:hover {
+            color: $hover-full;
+        }
+    }
+    
+    .life-empty {
+        color: $life-empty;
+    }
+    .life-full {
+        color: $life-full;
+    }
+}

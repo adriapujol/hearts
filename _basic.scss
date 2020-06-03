@@ -1,0 +1,27 @@
+@import "./colors";
+
+@mixin centerContent() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+    color: $title-color;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: $bg-color;
+    @include centerContent();
+
+    .title {
+        font-size: 3vw;
+    }
+}
