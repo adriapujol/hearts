@@ -1,29 +1,29 @@
-const heart = document.getElementById('life-1');
-// document.addEventListener('mouseover', (e)=> {
-//     let cor = e.target;
-//     console.log(cor);
-//     if (cor.classList.contains('life-unit')) {
-//         cor.classList.toggle('life-full');
-//     }
-//     // heart.classList.toggle('life-full');
-// });
+//Hover effect, paints all hearts from start to the one hovered over included when mouse enters element
 
-// document.addEventListener('mouseout', (e)=> {
-//     let cor = e.target;
-//     console.log(cor);
-//     if (cor.classList.contains('life-unit')) {
-//         cor.classList.toggle('life-full');
-//     }
-//     // heart.classList.toggle('life-full');
-// });
+document.addEventListener('mouseover', (e)=> {
+    const heart = e.target;
+    const heartID = getID(heart.id);
+    if (heart.classList.contains('life-unit') && !heart.classList.contains('painted')) {
+        hoverHeart(heartID);
+    }
+});
+
+//Hover effect, clears all hearts when exiting
+
+document.addEventListener('mouseout', (e)=> {
+    const heart = e.target;
+    if (heart.classList.contains('life-unit')) {
+        resetHoverHearts();
+    }
+});
+
+
+// Paints hearts when clicking a heart and cleans camps when clicking outside the hearts box
 
 document.addEventListener('click', (e)=> {
     const heart = e.target;
-    // console.log(heart);
     const heartID = getID(heart.id);
-    // console.log(heartID);
     if (heart.classList.contains('life-unit')) {
-        // console.log('yes');
         resetHearts();
         paintHeart(heartID);
     } else {
@@ -32,29 +32,50 @@ document.addEventListener('click', (e)=> {
 });
 
 
-//Paint hearts when clicked
+//Paint hearts when clicked ---> Adds painted class for checking later if it has to be cleaned when hovering or not
 const paintHeart = (id) => {
-    // console.log(`life-${id}`);
-    let heart = document.getElementById(`life-${id}`);
-    // console.log(heart);
+
     for (let i = 1; i <= id; i++) {
         let heart = document.getElementById(`life-${i}`);
-        console.log();
+        heart.classList.add('life-full');
+        heart.classList.add('painted');
+    }
+}
+
+
+// Paint hearts when hover
+
+const hoverHeart = (id) => {
+
+    for (let i = 1; i <= id; i++) {
+        let heart = document.getElementById(`life-${i}`);
         heart.classList.add('life-full');
     }
 }
 
 
-//Reset colors when click outside
+
+//Reset colors when click outside 
+
 const resetHearts = () => {
     const lifeBlock = document.getElementById('life-block');
     for (let i = 0; i < lifeBlock.children.length; i++) {
         lifeBlock.children[i].classList.remove('life-full');
+        lifeBlock.children[i].classList.remove('painted');
     }
 }
 
 
+//Reset colors when hovering out
 
-//get ID number from string
+const resetHoverHearts = () => {
+    const lifeBlock = document.getElementById('life-block');
+    for (let i = 0; i < lifeBlock.children.length; i++) {
+        if (!lifeBlock.children[i].classList.contains('painted')) 
+            lifeBlock.children[i].classList.remove('life-full');
+    }
+}
+
+//get ID number from string ---> input "life-1" --> output "1"
 
 const getID = (str) => str.slice(5);
