@@ -33,13 +33,13 @@ body {
   font-size: 5.5vw;
 }
 .life-block .life-unit:hover {
-  color: #bd2424;
+  color: #ff0000;
 }
 .life-block .life-empty {
   color: white;
 }
 .life-block .life-full {
-  color: #d62828;
+  color: #e42e2e;
 }
 
 /*# sourceMappingURL=style.css.map */
