@@ -70,7 +70,6 @@ const resetHearts = () => {
 //Reset colors when hovering out
 
 const resetHoverHearts = () => {
-    const lifeBlock = document.getElementById('life-block');
     for (let i = 0; i < lifeBlock.children.length; i++) {
         if (!lifeBlock.children[i].classList.contains('painted')) 
             lifeBlock.children[i].classList.remove('life-full');
