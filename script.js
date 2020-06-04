@@ -1,5 +1,6 @@
+//Selecting hearts' container
+const lifeBlock = document.getElementById('life-block');
 //Hover effect, paints all hearts from start to the one hovered over included when mouse enters element
-
 document.addEventListener('mouseover', (e)=> {
     const heart = e.target;
     const heartID = getID(heart.id);
@@ -57,8 +58,8 @@ const hoverHeart = (id) => {
 
 //Reset colors when click outside 
 
+
 const resetHearts = () => {
-    const lifeBlock = document.getElementById('life-block');
     for (let i = 0; i < lifeBlock.children.length; i++) {
         lifeBlock.children[i].classList.remove('life-full');
         lifeBlock.children[i].classList.remove('painted');
